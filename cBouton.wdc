@@ -1,0 +1,62 @@
+#To edit and compare internal_properties, use WINDEV integrated tools.
+#Internal properties refer to the properties of controls in windows, reports, etc.
+info :
+ name : cBouton
+ major_version : 28
+ minor_version : 0
+ type : 4
+ description : ""
+ subtype : 0
+class :
+ identifier : 0x403e353e1303f7a1
+ internal_properties : CAAAAAgAAAB2/vstTMCJbS/hlxjFxirSqKvCUuv8YxgpWyl7S3iA
+ code_elements :
+  type_code : 10
+  p_codes :
+   -
+     code : |1+
+      cBouton est classe
+      	m_sNomDuChamp 	est une chaîne
+      	m_sLibelléFR 	est une chaîne
+      	m_sLibelléUS 	est une chaîne
+      	m_nTypeBouton 	est une entier
+      FIN
+     type : 131072
+  procedures :
+   -
+     name : Constructeur
+     procedure_id : 4629196008133621665
+     type_code : 27
+     code : |1-
+      PROCEDURE Constructeur(nom, libF, libU, type)
+      
+      // Mémorise les variables
+      :m_sNomDuChamp 	= nom
+      :m_sLibelléFR 	= libF
+      :m_sLibelléUS 	= libU
+      :m_nTypeBouton 	= type
+     type : 589824
+   -
+     name : Destructeur
+     procedure_id : 4629196007564113825
+     type_code : 28
+     code : |1+
+      PROCEDURE Destructeur()
+      
+     type : 655360
+  procedure_templates : []
+  property_templates : []
+ code_parameters :
+  internal_properties : CAAAAAgAAACVGQgYbalU7DKC3oH4ItDrjtcTHXXV/EuH8q0IbhyQlw==
+resources :
+ string_res :
+  identifier : 0x403e35231b4a8ba0
+  internal_properties : CAAAAAgAAACm76HWfKGWp33VjXInA4cRlqArlgTTA862QGt72W2ld5Y=
+  strings :
+   -
+     text :
+      fr-FR : " "
+      en-GB : " "
+     index : 0
+custom_note :
+ internal_properties : CAAAAAgAAABtB9HWVzrXO2+4NDRVK0vmzaNKrCKqH1DBX30lMmGZ

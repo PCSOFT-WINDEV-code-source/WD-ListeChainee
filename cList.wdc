@@ -1,0 +1,143 @@
+#To edit and compare internal_properties, use WINDEV integrated tools.
+#Internal properties refer to the properties of controls in windows, reports, etc.
+info :
+ name : cList
+ major_version : 28
+ minor_version : 0
+ type : 4
+ description : ""
+ subtype : 0
+class :
+ identifier : 0x401f5089373309e8
+ internal_properties : CAAAAAgAAAB2/vstTMCJbS/hlxjFxirSqKvCUuv8YxgpWyl7S3iA
+ code_elements :
+  internal_properties : CAAAAAgAAADgAiu1BCEOznnVyvz10aJGnTNSTydkus8GbuLLPBujyk8wdwgwo/2rOruzZDR8cwpZx07afxETT0e/HBLZHdwDej73qkVBt1YKwrcEUEx2qTp5jU9SP0hOci7LV0HW1Q0yx9gbhfwyPu24lM/HuYbs0Po3O1hsXgyd828ij+R817o40obJnh4n/uubs/IxcVKA8/QsDPrj8W54GBtA4PMgz+lhGt0QpBSKLNZrWZaJt6M12vGEClMdROxterzUylYpISRr+T/Fda2iJ5xtKxv3CoULSHb57CIBH1itPiR7dp4V9GTE2l66g3OrrIzwbyRLTfFDrwVQCZio457+mzoTYU7tTM+itj61sA0KMK2kpUntb03xBQKAYW2nLexoALK4R14w1ueME9+3LCg3nZ1/f/h1P6Ybe9MpnH3072xILWRHdF1JT10G4pqDk9iiBH2BXFyRKwl1H2rLcbSIk6MGLb5B7e/NnlSThCef+w==
+  type_code : 10
+  p_codes :
+   -
+     code : |1-
+      cList est classe
+      	m_clPremierNode 	est un cNode dynamique
+      	m_nNbNode 			est un entier
+      	m_sDefinition 		est une chaîne
+      FIN
+     type : 131072
+  procedures :
+   -
+     name : Constructor
+     procedure_id : 4620500292797401576
+     type_code : 27
+     code : |1-
+      PROCEDURE Constructeur(defString = <§$0000§>)
+      
+      // Mémorise les variables
+      :m_clPremierNode = Null
+      :m_sDefinition = defString
+     type : 589824
+   -
+     name : Destructor
+     internal_properties : CAAAAAgAAABap3hW8Um0q9MOUc4e0rYtGufEWVtLxMwfczq4k774xS5IvOeQDhjEJ6SkryW2XikqW0fd5zne4BDcZONnt1L5qHeUpsjhlJan/criehJL4satKKaUTsiZJ7TTzs38c4slui5NuknIVZ2V2N9coaaejY+njpHHgevas/OFn9MX3Q4g4OBwcH5oFNWUPs5M93fZ9xD1hWdifTbJznamtk9+2spwcMHq0opHcTER4xcOt1Y5+2K1i7II2ejvbrZdvfbeGxO578Kb0oC4LGfmL7Ih9/k1cfnzc7I=
+     procedure_id : 4620500293042309608
+     type_code : 28
+     code : |1-
+      PROCEDURE Destructeur()
+      
+      // Deux objets sont requis
+      NewObj est objet cNode dynamique
+      DelObj est objet cNode dynamique
+      
+      // Si le premier Node existe
+      SI :m_clPremierNode <> Null ALORS
+      	// Récupère ce premier Node
+      	DelObj = :m_clPremierNode
+      	// Définit le Node suivant
+      	NewObj = DelObj:m_pclnextNode
+      
+      	// Libère l'objet
+      	libérer DelObj
+      
+      	// Tant qu'il existe un Node suivant
+      	TANTQUE NewObj <> Null
+      		// Récupère ce Node		
+      		DelObj = NewObj
+      		// Définit le Node suivant
+      		NewObj = DelObj:m_pclnextNode
+      	FIN
+      FIN
+     type : 655360
+   -
+     name : AddNode
+     internal_properties : CAAAAAgAAABk3/Oa1MUDcoDTMgi3Rfl5Tf88sO0frRZdZ2r+7u3tT6oSdrtFLfYocUsArd4YxxqdGYpk2YXWIgmH4qLvBoDxvFIEx1p6xpv/btx9cEhOzG/h01HlA/DsYzhXUP12NBgA6XJd2GxW1Tb6aMlIoMno8VfVRIK7vOPoFSQiOcRgwxDOdj43psk0LJkbwRwLcjNBk/E4lwy47u8GHIbJFhoxZ14NtFcc8X1CZntH+OC7PRhj/34ESGDH4g0Ml8QsZl1pfuBwOuDNp6vmii7XqNfRcb+EINP4
+     procedure_id : 4620501550547567075
+     type_code : 12
+     code : |1-
+      PROCEDURE AddNode(dataObject)
+      
+      // Objet Node
+      NewObj est objet cNode dynamique
+      NewObj = allouer cNode(dataObject)
+      
+      // S'il n'existe pas de premier Node
+      SI :m_clPremierNode = Null ALORS
+      	// Le node à ajouter est le premier
+      	:m_clPremierNode = NewObj
+      SINON
+      	// Recherche le dernier Node pour s'y accrocher
+      	TmpObj est objet cNode dynamique	
+      	TmpObj = :m_clPremierNode
+      	TANTQUE TmpObj:m_pclnextNode <> Null
+      		TmpObj = TmpObj:m_pclnextNode		
+      	FIN
+      	// Ici, TmpObj correspondant au dernier Node
+      	TmpObj:m_pclnextNode = NewObj
+      FIN
+      
+      // Incrémente le nombre de Node
+      :m_nNbNode++
+     type : 458752
+  procedure_templates : []
+  property_templates : []
+ code_parameters :
+  internal_properties : CAAAAAgAAACVGQgYbalU7DKC3oH4ItDrjtcTHXXV/EuH8q0IbhyQlw==
+resources :
+ string_res :
+  identifier : 0x401f50836b6ff45c
+  internal_properties : CAAAAAgAAACm76HWfKGWp33VjXInA4cRlqArlgTTA862QGt72W2ld5Y=
+  strings :
+   -
+     text :
+      fr-FR : Une liste indéfinie
+      en-GB : Une liste indéfinie
+     index : 0
+   -
+     text :
+      fr-FR : "Destr. "
+      en-GB : "Destr. "
+     index : 1
+   -
+     text :
+      fr-FR : "Destr.. "
+      en-GB : "Destr.. "
+     index : 2
+   -
+     text :
+      fr-FR : "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  DUMP classe cList"
+      en-GB : "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  DUMP classe cList"
+     index : 3
+   -
+     text :
+      fr-FR : Pas d'objet dans la classe
+      en-GB : No object in class
+     index : 4
+   -
+     text :
+      fr-FR : ":nbNode= "
+      en-GB : ":nbNode= "
+     index : 5
+   -
+     text :
+      fr-FR : "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"
+      en-GB : "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"
+     index : 6
+custom_note :
+ internal_properties : CAAAAAgAAABtB9HWVzrXO2+4NDRVK0vmzaNKrCKqH1DBX30lMmGZ
